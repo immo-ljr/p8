@@ -44,4 +44,14 @@ del_flag AS delFlag,
     	SELECT SUM(monitor_fail)
     	FROM k_trans_monitor WHERE ADD_USER = #{userId} AND del_flag ='1'
     </select>
+    
+    <select id="getListJoinPage" parameterType="java.lang.String" resultType="java.util.HashMap">
+    	select ktm.id, ktm.monitor_trans monitorTrans, kt.trans_name transName, kt.run_status runStatus, 
+		ktm.monitor_success monitorSuccess,ktm.monitor_fail monitorFail, kt.trans_description transDescription
+		from  k_trans_monitor ktm
+		join k_trans kt on ktm.monitor_trans = kt.id
+		and kt.add_user = #{userId} and kt.del_flag = '1'
+    </select>
+    
+    
 </mapper>

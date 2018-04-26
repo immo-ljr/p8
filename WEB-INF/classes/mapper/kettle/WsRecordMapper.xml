@@ -4,29 +4,26 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.WsRecord">
-    <result column="id" property="id" />
-    <result column="add_time" property="addTime" />
-    <result column="add_user" property="addUser" />
-    <result column="edit_time" property="editTime" />
-    <result column="edit_user" property="editUser" />
-    <result column="del_flag" property="delFlag" />
+        <id column="id" property="id" />
         <result column="param_startDate" property="paramStartDate" />
         <result column="param_endDate" property="paramEndDate" />
         <result column="param_cf_id" property="paramCfId" />
         <result column="param_drug_id" property="paramDrugId" />
         <result column="param_order_id" property="paramOrderId" />
+        <result column="RECORD_STATUS" property="recordStatus" />
         <result column="ws_function_name" property="wsFunctionName" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+        <result column="add_time" property="addTime" />
+        <result column="add_user" property="addUser" />
+        <result column="edit_time" property="editTime" />
+        <result column="edit_user" property="editUser" />
+        <result column="del_flag" property="delFlag" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-id,
-add_time AS addTime,
-add_user AS addUser,
-edit_time AS editTime,
-edit_user AS editUser,
-del_flag AS delFlag,
-        param_startDate AS paramStartDate, param_endDate AS paramEndDate, param_cf_id AS paramCfId, param_drug_id AS paramDrugId, param_order_id AS paramOrderId, ws_function_name AS wsFunctionName
+        id, param_startDate AS paramStartDate, param_endDate AS paramEndDate, param_cf_id AS paramCfId, param_drug_id AS paramDrugId, param_order_id AS paramOrderId, RECORD_STATUS AS recordStatus, ws_function_name AS wsFunctionName, START_TIME AS startTime, END_TIME AS endTime, add_time AS addTime, add_user AS addUser, edit_time AS editTime, edit_user AS editUser, del_flag AS delFlag
     </sql>
     
 	<select id="selectByPageAndWrapper" resultType="WsRecord">

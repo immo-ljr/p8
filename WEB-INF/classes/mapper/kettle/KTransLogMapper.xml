@@ -40,4 +40,18 @@ id,
 			) t2 join k_trans_log ktl on t2.trans_record_id = ktl.trans_record_id
 			where table_flag = '1'
     </select>
+    
+    <select id="getListSimpIndex" resultType="java.util.HashMap">
+	    	select add_date from(
+				select kt.id trans_id,ktr.id trans_record_id, ktr.add_time, SUBSTR(ktr.add_time FROM 1 FOR 10) add_date  from k_trans kt 
+				JOIN k_trans_record ktr on kt.id = ktr.RECORD_TRANS and kt.trans_name REGEXP '^自动'
+				where 1=1
+				<if test="startDate != null and startDate != ''">
+					and ktr.add_time &gt;= #{startDate}
+				</if>
+				<if test="endDate != null and endDate != ''">
+					and ktr.add_time &lt;= concat(#{endDate},' 23:59:59')
+				</if>
+			)t1 GROUP BY add_date
+    </select>
 </mapper>

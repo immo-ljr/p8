@@ -36,4 +36,29 @@ DEL_FLAG AS delFlag,
         <include refid="Base_Column_List" />
         FROM order_daily ${ew.sqlSegment}
     </select>
+    
+        <select id="getHisCountMap" resultType="java.util.HashMap">
+		SELECT
+			sum(out_patient_num) AS outPatientNum,
+			sum(out_patient_fee) AS outPatientfee,
+			sum(out_patient_drug_fee) AS outPatientDrugFee
+		FROM
+			order_daily
+		WHERE
+			tj_date &gt;= #{startTime}
+		AND tj_date &lt;= #{endTime}
+    </select>
+    
+    <select id="getLocalCountMap" resultType="java.util.HashMap">
+		SELECT
+			count(DISTINCT eo.PATIENT_NO) AS outPatientNum,
+			sum(ef.TOTAL_FEE) AS outPatientFee,
+			sum(ef.TOTAL_DRUG_FEE) AS out_patient_drug_fee
+		FROM
+			eng_order eo
+		LEFT JOIN order_patient_daily_fee ef ON eo.id = ef.ORDER_ID
+		WHERE
+			out_date &gt;= #{startTime}
+		AND out_date &lt;= #{endTime}
+    </select>
 </mapper>

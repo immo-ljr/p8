@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: p8-phamacybus
 Implementation-Version: 1.0.0-SNAPSHOT
-Built-By: xiaoxl
+Built-By: Administrator
 Implementation-Vendor-Id: com.immo
-Build-Jdk: 1.8.0_161
+Build-Jdk: 1.8.0_171
 Implementation-URL: http://projects.spring.io/spring-boot/p8-parent/p8
  -phamacybus/
 Created-By: Maven Integration for Eclipse

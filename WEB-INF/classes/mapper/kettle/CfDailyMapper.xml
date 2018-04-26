@@ -34,4 +34,38 @@ DEL_FLAG AS delFlag,
         <include refid="Base_Column_List" />
         FROM cf_daily ${ew.sqlSegment}
     </select>
+    
+    <select id="getHisCountMap" resultType="java.util.HashMap">
+		SELECT
+			sum(patient_num) AS patientNum,
+			sum(patient_time_num) AS patientTimeNum,
+			sum(cf_count) AS cfCount,
+			sum(total_fee) AS totalFee,
+			sum(total_drug_fee) AS totalDrugFee
+		FROM
+			cf_daily
+		WHERE
+			tj_date &gt;= #{startTime}
+		AND tj_date &lt;= #{endTime}
+    </select>
+    
+    <select id="getLocalCountMap" resultType="java.util.HashMap">
+	    SELECT
+			count(DISTINCT ec.PATIENT_NO) AS patientNum,
+			count(
+				DISTINCT CONCAT(
+					ec.PATIENT_NO,
+					LEFT (ec.pres_date_time, 10)
+				)
+			) AS patientTimeNum,
+			count(1) AS cfCount,
+			sum(ec.total_amount) AS totalFee,
+			sum(eci.amount) AS totalDrugFee
+		FROM
+			eng_cf ec
+		LEFT JOIN eng_cf_item eci ON ec.id = eci.cfid
+		WHERE
+			pres_date_time &gt;= #{startTime}
+		AND pres_date_time &lt;= #{endTime}
+    </select>
 </mapper>

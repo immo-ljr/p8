@@ -19,6 +19,7 @@
         <result column="trans_record" property="transRecord" />
         <result column="trans_log_level" property="transLogLevel" />
         <result column="trans_status" property="transStatus" />
+        <result column="run_status" property="runStatus" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -29,7 +30,9 @@ add_user AS addUser,
 edit_time AS editTime,
 edit_user AS editUser,
 del_flag AS delFlag,
-        trans_name AS transName, trans_description AS transDescription, trans_type AS transType, trans_path AS transPath, trans_repository_id AS transRepositoryId, trans_quartz AS transQuartz, trans_record AS transRecord, trans_log_level AS transLogLevel, trans_status AS transStatus
+        trans_name AS transName, trans_description AS transDescription, trans_type AS transType,
+         trans_path AS transPath, trans_repository_id AS transRepositoryId, trans_quartz AS transQuartz, 
+         trans_record AS transRecord, trans_log_level AS transLogLevel, trans_status AS transStatus, run_status AS runStatus
     </sql>
     
 	<select id="selectByPageAndWrapper" resultType="KTrans">
@@ -37,4 +40,19 @@ del_flag AS delFlag,
         <include refid="Base_Column_List" />
         FROM k_trans ${ew.sqlSegment}
     </select>
+    
+    
+    <select id="getListMapPage" resultType="java.util.Map">
+    	select kt.id, kt.TRANS_NAME transName, kt.TRANS_DESCRIPTION transDescription,
+		kq.quartz_description quartzDescription,kq.quartz_cron quartzCron,
+		kt.TRANS_STATUS transStatus, kt.run_status runStatus, kt.EDIT_TIME editTime
+		from k_trans kt LEFT JOIN k_quartz kq 
+		on kt.TRANS_QUARTZ = kq.id
+		where kt.add_user = #{userId}
+    </select>
+    
+    <update id="updateRunStatusById">
+    	update k_trans set run_status = #{runStatus}
+    	where id = #{id}
+    </update>
 </mapper>

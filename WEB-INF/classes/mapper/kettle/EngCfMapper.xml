@@ -2,65 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.immo.phamacybus.kettle.mapper.EngCfMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngCf">
-    <result column="ID" property="id" />
-    <result column="ADD_USER" property="addUser" />
-    <result column="EDIT_USER" property="editUser" />
-    <result column="ADD_TIME" property="addTime" />
-    <result column="EDIT_TIME" property="editTime" />
-    <result column="DEL_FLAG" property="delFlag" />
-        <result column="VISIT_NO" property="visitNo" />
-        <result column="DEPART_ID" property="departId" />
-        <result column="DEPARTMENT" property="department" />
-        <result column="AGE" property="age" />
-        <result column="PRES_TYPE" property="presType" />
-        <result column="PRES_DATE_TIME" property="presDateTime" />
-        <result column="SEX" property="sex" />
-        <result column="PAY_TYPE" property="payType" />
-        <result column="PATIENT_NO" property="patientNo" />
-        <result column="PRES_NO" property="presNo" />
-        <result column="NAME" property="name" />
-        <result column="ADDRESS" property="address" />
-        <result column="PHONE_NO" property="phoneNo" />
-        <result column="ID_CARD" property="idCard" />
-        <result column="HEIGHT" property="height" />
-        <result column="WEIGHT" property="weight" />
-        <result column="BIRTH_WEIGHT" property="birthWeight" />
-        <result column="CCR" property="ccr" />
-        <result column="ALLERGY_LIST" property="allergyList" />
-        <result column="PREGNANCY" property="pregnancy" />
-        <result column="TIME_OF_PREG" property="timeOfPreg" />
-        <result column="BREAST_FEEDING" property="breastFeeding" />
-        <result column="DIALYSIS" property="dialysis" />
-        <result column="PROX_NAME" property="proxName" />
-        <result column="PROX_ID_CARD" property="proxIdCard" />
-        <result column="DOC_ID" property="docId" />
-        <result column="DOC_NAME" property="docName" />
-        <result column="DOC_TITLE" property="docTitle" />
-        <result column="DEPT_GROUP" property="deptGroup" />
-        <result column="TOTAL_AMOUNT" property="totalAmount" />
-        <result column="PRES_SOURCE" property="presSource" />
-        <result column="CORRES_CF_PRESNO" property="corresCfPresno" />
-        <result column="RECIPE_TYPE" property="recipeType" />
-        <result column="COMMENT" property="comment" />
-        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
-    </resultMap>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngCf">
+		<result column="ID" property="id" />
+		<result column="ADD_USER" property="addUser" />
+		<result column="EDIT_USER" property="editUser" />
+		<result column="ADD_TIME" property="addTime" />
+		<result column="EDIT_TIME" property="editTime" />
+		<result column="DEL_FLAG" property="delFlag" />
+		<result column="VISIT_NO" property="visitNo" />
+		<result column="DEPART_ID" property="departId" />
+		<result column="DEPARTMENT" property="department" />
+		<result column="AGE" property="age" />
+		<result column="PRES_TYPE" property="presType" />
+		<result column="PRES_DATE_TIME" property="presDateTime" />
+		<result column="SEX" property="sex" />
+		<result column="PAY_TYPE" property="payType" />
+		<result column="PATIENT_NO" property="patientNo" />
+		<result column="PRES_NO" property="presNo" />
+		<result column="NAME" property="name" />
+		<result column="ADDRESS" property="address" />
+		<result column="PHONE_NO" property="phoneNo" />
+		<result column="ID_CARD" property="idCard" />
+		<result column="HEIGHT" property="height" />
+		<result column="WEIGHT" property="weight" />
+		<result column="BIRTH_WEIGHT" property="birthWeight" />
+		<result column="CCR" property="ccr" />
+		<result column="ALLERGY_LIST" property="allergyList" />
+		<result column="PREGNANCY" property="pregnancy" />
+		<result column="TIME_OF_PREG" property="timeOfPreg" />
+		<result column="BREAST_FEEDING" property="breastFeeding" />
+		<result column="DIALYSIS" property="dialysis" />
+		<result column="PROX_NAME" property="proxName" />
+		<result column="PROX_ID_CARD" property="proxIdCard" />
+		<result column="DOC_ID" property="docId" />
+		<result column="DOC_NAME" property="docName" />
+		<result column="DOC_TITLE" property="docTitle" />
+		<result column="DEPT_GROUP" property="deptGroup" />
+		<result column="TOTAL_AMOUNT" property="totalAmount" />
+		<result column="PRES_SOURCE" property="presSource" />
+		<result column="CORRES_CF_PRESNO" property="corresCfPresno" />
+		<result column="RECIPE_TYPE" property="recipeType" />
+		<result column="COMMENT" property="comment" />
+		<result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+	</resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-ID AS id,
-ADD_USER AS addUser,
-EDIT_USER AS editUser,
-ADD_TIME AS addTime,
-EDIT_TIME AS editTime,
-DEL_FLAG AS delFlag,
-        VISIT_NO AS visitNo, DEPART_ID AS departId, DEPARTMENT AS department, AGE AS age, PRES_TYPE AS presType, PRES_DATE_TIME AS presDateTime, SEX AS sex, PAY_TYPE AS payType, PATIENT_NO AS patientNo, PRES_NO AS presNo, NAME AS name, ADDRESS AS address, PHONE_NO AS phoneNo, ID_CARD AS idCard, HEIGHT AS height, WEIGHT AS weight, BIRTH_WEIGHT AS birthWeight, CCR AS ccr, ALLERGY_LIST AS allergyList, PREGNANCY AS pregnancy, TIME_OF_PREG AS timeOfPreg, BREAST_FEEDING AS breastFeeding, DIALYSIS AS dialysis, PROX_NAME AS proxName, PROX_ID_CARD AS proxIdCard, DOC_ID AS docId, DOC_NAME AS docName, DOC_TITLE AS docTitle, DEPT_GROUP AS deptGroup, TOTAL_AMOUNT AS totalAmount, PRES_SOURCE AS presSource, CORRES_CF_PRESNO AS corresCfPresno, RECIPE_TYPE AS recipeType, COMMENT AS comment, LAST_UPDATE_TIME AS lastUpdateTime
-    </sql>
-    
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		ID AS id,
+		ADD_USER AS addUser,
+		EDIT_USER AS editUser,
+		ADD_TIME AS addTime,
+		EDIT_TIME AS editTime,
+		DEL_FLAG AS delFlag,
+		VISIT_NO AS visitNo, DEPART_ID AS departId, DEPARTMENT AS department, AGE AS
+		age, PRES_TYPE AS presType, PRES_DATE_TIME AS presDateTime, SEX AS
+		sex, PAY_TYPE AS payType, PATIENT_NO AS patientNo, PRES_NO AS presNo,
+		NAME AS name, ADDRESS AS address, PHONE_NO AS phoneNo, ID_CARD AS
+		idCard, HEIGHT AS height, WEIGHT AS weight, BIRTH_WEIGHT AS
+		birthWeight, CCR AS ccr, ALLERGY_LIST AS allergyList, PREGNANCY AS
+		pregnancy, TIME_OF_PREG AS timeOfPreg, BREAST_FEEDING AS
+		breastFeeding, DIALYSIS AS dialysis, PROX_NAME AS proxName,
+		PROX_ID_CARD AS proxIdCard, DOC_ID AS docId, DOC_NAME AS docName,
+		DOC_TITLE AS docTitle, DEPT_GROUP AS deptGroup, TOTAL_AMOUNT AS
+		totalAmount, PRES_SOURCE AS presSource, CORRES_CF_PRESNO AS
+		corresCfPresno, RECIPE_TYPE AS recipeType, COMMENT AS comment,
+		LAST_UPDATE_TIME AS lastUpdateTime
+	</sql>
+
 	<select id="selectByPageAndWrapper" resultType="EngCf">
-        SELECT 
-        <include refid="Base_Column_List" />
-        FROM eng_cf ${ew.sqlSegment}
-    </select>
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM eng_cf ${ew.sqlSegment}
+	</select>
+
+	<select id="getCountMap" resultType="java.util.HashMap">
+		select name,id from
+		tsql_test_region where
+		id=#{id}
+	</select>
+
+
 </mapper>
