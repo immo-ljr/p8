@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.KWebserviceMonitorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.KWebserviceMonitor">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="MONITOR_WEBSERVICE" property="monitorWebservice" />
+        <result column="MONITOR_FUNCTION" property="monitorFunction" />
+        <result column="MONITOR_SUCCESS" property="monitorSuccess" />
+        <result column="MONITOR_FAIL" property="monitorFail" />
+        <result column="MONITOR_STATUS" property="monitorStatus" />
+        <result column="RUN_STATUS" property="runStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        MONITOR_WEBSERVICE AS monitorWebservice, MONITOR_FUNCTION AS monitorFunction, MONITOR_SUCCESS AS monitorSuccess, MONITOR_FAIL AS monitorFail, MONITOR_STATUS AS monitorStatus, RUN_STATUS AS runStatus
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="KWebserviceMonitor">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM k_webservice_monitor ${ew.sqlSegment}
+    </select>
+    
+        <select id="getAllSuccessCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	SELECT SUM(monitor_success)
+    	FROM k_webservice_monitor WHERE ADD_USER = #{userId} AND del_flag ='1'
+    </select>
+    
+    <select id="getAllFailCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	SELECT SUM(monitor_fail)
+    	FROM k_webservice_monitor WHERE ADD_USER = #{userId} AND del_flag ='1'
+    </select>
+    
+</mapper>

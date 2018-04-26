@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.OrderDailyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.OrderDaily">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="OUT_PATIENT_NUM" property="outPatientNum" />
+        <result column="IN_PATIENT_NUM" property="inPatientNum" />
+        <result column="LIVE_PATIENT_NUM" property="livePatientNum" />
+        <result column="OUT_PATIENT_FEE" property="outPatientFee" />
+        <result column="OUT_PATIENT_DRUG_FEE" property="outPatientDrugFee" />
+        <result column="TOTAL_FEE" property="totalFee" />
+        <result column="TOTAL_DRUG_FEE" property="totalDrugFee" />
+        <result column="TJ_DATE" property="tjDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        OUT_PATIENT_NUM AS outPatientNum, IN_PATIENT_NUM AS inPatientNum, LIVE_PATIENT_NUM AS livePatientNum, OUT_PATIENT_FEE AS outPatientFee, OUT_PATIENT_DRUG_FEE AS outPatientDrugFee, TOTAL_FEE AS totalFee, TOTAL_DRUG_FEE AS totalDrugFee, TJ_DATE AS tjDate
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="OrderDaily">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM order_daily ${ew.sqlSegment}
+    </select>
+</mapper>

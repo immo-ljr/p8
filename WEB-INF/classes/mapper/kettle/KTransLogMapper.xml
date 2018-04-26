@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.KTransLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.KTransLog">
+    <result column="id" property="id" />
+        <result column="step_name" property="stepName" />
+        <result column="trans_record_id" property="transRecordId" />
+        <result column="insert_num" property="insertNum" />
+        <result column="update_num" property="updateNum" />
+        <result column="intputNum" property="intputNum" />
+        <result column="error_num" property="errorNum" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="table_flag" property="tableFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+        step_name AS stepName, trans_record_id AS transRecordId, insert_num AS insertNum, update_num AS updateNum, intput_num AS intputNum, error_num AS errorNum, start_date AS startDate, end_date AS endDate,
+        table_flag AS tableFlag
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="KTransLog">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM k_trans_log ${ew.sqlSegment}
+    </select>
+    
+    <select id="getListSimpLog" parameterType="java.lang.String" resultType="java.util.HashMap">
+    		select ktl.step_name, t2.add_time, ktl.insert_num, ktl.update_num, ktl.error_num, ktl.start_date, ktl.end_date from(
+				select * from(
+					select kt.id trans_id,ktr.id trans_record_id, ktr.add_time, SUBSTR(ktr.add_time FROM 1 FOR 10) add_date  from k_trans kt 
+							JOIN k_trans_record ktr on kt.id = ktr.RECORD_TRANS and kt.trans_name REGEXP '^自动'
+							where ktr.add_time &gt;= #{logDate} and ktr.add_time &lt;= concat(#{logDate},' 23:59:59')
+							order by ktr.add_time desc
+				)t1 GROUP BY add_date, trans_id
+			) t2 join k_trans_log ktl on t2.trans_record_id = ktl.trans_record_id
+			where table_flag = '1'
+    </select>
+</mapper>

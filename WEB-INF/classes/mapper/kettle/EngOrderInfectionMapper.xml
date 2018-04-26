@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderInfectionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderInfection">
+        <id column="ORDER_ID" property="orderId" />
+        <result column="HI_CODE" property="hiCode" />
+        <result column="HI_NAME" property="hiName" />
+        <result column="HI_OUT_COME" property="hiOutCome" />
+        <result column="RESCUE_TIMES" property="rescueTimes" />
+        <result column="RESCUE_SUCC_TIMES" property="rescueSuccTimes" />
+        <result column="PATHOLOGIC_DIAG" property="pathologicDiag" />
+        <result column="PATHOLOGIC_NAME" property="pathologicName" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ORDER_ID AS orderId, HI_CODE AS hiCode, HI_NAME AS hiName, HI_OUT_COME AS hiOutCome, RESCUE_TIMES AS rescueTimes, RESCUE_SUCC_TIMES AS rescueSuccTimes, PATHOLOGIC_DIAG AS pathologicDiag, PATHOLOGIC_NAME AS pathologicName, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderInfection">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_infection ${ew.sqlSegment}
+    </select>
+</mapper>

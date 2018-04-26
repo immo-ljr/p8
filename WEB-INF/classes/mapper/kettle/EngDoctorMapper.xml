@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngDoctorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngDoctor">
+        <id column="DOC_ID" property="docId" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="DOC_NAME" property="docName" />
+        <result column="DOC_TITLE" property="docTitle" />
+        <result column="WORK_SCOPE" property="workScope" />
+        <result column="DEPART_ID" property="departId" />
+        <result column="DEPARTMENT" property="department" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        DOC_ID AS docId, DOC_NAME AS docName, DOC_TITLE AS docTitle, WORK_SCOPE AS workScope, DEPART_ID AS departId, DEPARTMENT AS department, CREATE_DATE AS createDate, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngDoctor">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_doctor ${ew.sqlSegment}
+    </select>
+</mapper>

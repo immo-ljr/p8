@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.KJobRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.KJobRecord">
+    <result column="id" property="id" />
+    <result column="add_user" property="addUser" />
+    <result column="add_time" property="addTime" />
+    <result column="edit_time" property="editTime" />
+    <result column="edit_user" property="editUser" />
+    <result column="del_flag" property="delFlag" />
+        <result column="record_id" property="recordId" />
+        <result column="record_job" property="recordJob" />
+        <result column="start_time" property="startTime" />
+        <result column="stop_time" property="stopTime" />
+        <result column="record_status" property="recordStatus" />
+        <result column="log_file_path" property="logFilePath" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+add_user AS addUser,
+add_time AS addTime,
+edit_time AS editTime,
+edit_user AS editUser,
+del_flag AS delFlag,
+        record_id AS recordId, record_job AS recordJob, start_time AS startTime, stop_time AS stopTime, record_status AS recordStatus, log_file_path AS logFilePath
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="KJobRecord">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM k_job_record ${ew.sqlSegment}
+    </select>
+</mapper>

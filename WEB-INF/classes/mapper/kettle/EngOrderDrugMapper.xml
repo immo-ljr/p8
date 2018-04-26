@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderDrugMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderDrug">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="ORDER_ID" property="orderId" />
+        <result column="TYPE" property="type" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+        <result column="CONTINUE_DAY" property="continueDay" />
+        <result column="PRES_DATE_TIME" property="presDateTime" />
+        <result column="GROUP_NO" property="groupNo" />
+        <result column="CO_ADMIN" property="coAdmin" />
+        <result column="DRUG_ID" property="drugId" />
+        <result column="DRUG_NAME" property="drugName" />
+        <result column="PREP_FORM" property="prepForm" />
+        <result column="SPEC_NAME" property="specName" />
+        <result column="REG_NAME" property="regName" />
+        <result column="MANUFACTURER_NAME" property="manufacturerName" />
+        <result column="ADMIN_ROUTE" property="adminRoute" />
+        <result column="ADMIN_DOSE" property="adminDose" />
+        <result column="ADMIN_FREQUENCY" property="adminFrequency" />
+        <result column="ADMIN_METHOD" property="adminMethod" />
+        <result column="ADMIN_GOAL" property="adminGoal" />
+        <result column="DOC_ID" property="docId" />
+        <result column="DOC_NAME" property="docName" />
+        <result column="DOC_TITLE" property="docTitle" />
+        <result column="PRES_DEPART_ID" property="presDepartId" />
+        <result column="PRES_DEPARTMENT" property="presDepartment" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        ORDER_ID AS orderId, TYPE AS type, START_TIME AS startTime, END_TIME AS endTime, CONTINUE_DAY AS continueDay, PRES_DATE_TIME AS presDateTime, GROUP_NO AS groupNo, CO_ADMIN AS coAdmin, DRUG_ID AS drugId, DRUG_NAME AS drugName, PREP_FORM AS prepForm, SPEC_NAME AS specName, REG_NAME AS regName, MANUFACTURER_NAME AS manufacturerName, ADMIN_ROUTE AS adminRoute, ADMIN_DOSE AS adminDose, ADMIN_FREQUENCY AS adminFrequency, ADMIN_METHOD AS adminMethod, ADMIN_GOAL AS adminGoal, DOC_ID AS docId, DOC_NAME AS docName, DOC_TITLE AS docTitle, PRES_DEPART_ID AS presDepartId, PRES_DEPARTMENT AS presDepartment, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderDrug">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_drug ${ew.sqlSegment}
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.DrugConvertMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.DrugConvert">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="DRUG_ID" property="drugId" />
+        <result column="DRUG_NAME" property="drugName" />
+        <result column="UNIT_NUM" property="unitNum" />
+        <result column="UNIT" property="unit" />
+        <result column="CONVERT_NUM" property="convertNum" />
+        <result column="CONVERT_UNIT" property="convertUnit" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        DRUG_ID AS drugId, DRUG_NAME AS drugName, UNIT_NUM AS unitNum, UNIT AS unit, CONVERT_NUM AS convertNum, CONVERT_UNIT AS convertUnit, CREATE_DATE AS createDate, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="DrugConvert">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM drug_convert ${ew.sqlSegment}
+    </select>
+</mapper>

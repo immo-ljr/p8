@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderFeeDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderFeeDetail">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="PAY_FLAG" property="payFlag" />
+        <result column="ORDER_ID" property="orderId" />
+        <result column="ORDER_ITEM_ID" property="orderItemId" />
+        <result column="PATIENT_NO" property="patientNo" />
+        <result column="PATIENT_NAME" property="patientName" />
+        <result column="INVOICE_NO" property="invoiceNo" />
+        <result column="CHARGE_TIME" property="chargeTime" />
+        <result column="ITEM_TYPE" property="itemType" />
+        <result column="ITEM_CODE" property="itemCode" />
+        <result column="ITEM_NAME" property="itemName" />
+        <result column="ITEM_QTY" property="itemQty" />
+        <result column="ITEM_QTY_UNIT" property="itemQtyUnit" />
+        <result column="ITEM_UNIT_PRICE" property="itemUnitPrice" />
+        <result column="ITEM_AMOUNT" property="itemAmount" />
+        <result column="DOC_ID" property="docId" />
+        <result column="DOC_NAME" property="docName" />
+        <result column="DEPART_ID" property="departId" />
+        <result column="DEPARTMENT" property="department" />
+        <result column="EXECUTE_DEPART_ID" property="executeDepartId" />
+        <result column="EXECUTE_DEPARTMENT" property="executeDepartment" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        PAY_FLAG AS payFlag, ORDER_ID AS orderId, ORDER_ITEM_ID AS orderItemId, PATIENT_NO AS patientNo, PATIENT_NAME AS patientName, INVOICE_NO AS invoiceNo, CHARGE_TIME AS chargeTime, ITEM_TYPE AS itemType, ITEM_CODE AS itemCode, ITEM_NAME AS itemName, ITEM_QTY AS itemQty, ITEM_QTY_UNIT AS itemQtyUnit, ITEM_UNIT_PRICE AS itemUnitPrice, ITEM_AMOUNT AS itemAmount, DOC_ID AS docId, DOC_NAME AS docName, DEPART_ID AS departId, DEPARTMENT AS department, EXECUTE_DEPART_ID AS executeDepartId, EXECUTE_DEPARTMENT AS executeDepartment, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderFeeDetail">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_fee_detail ${ew.sqlSegment}
+    </select>
+</mapper>

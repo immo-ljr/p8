@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.WsRecordInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.WsRecordInfo">
+    <result column="id" property="id" />
+    <result column="add_time" property="addTime" />
+    <result column="add_user" property="addUser" />
+    <result column="edit_time" property="editTime" />
+    <result column="edit_user" property="editUser" />
+    <result column="del_flag" property="delFlag" />
+        <result column="ws_record_id" property="wsRecordId" />
+        <result column="table_name" property="tableName" />
+        <result column="select_num" property="selectNum" />
+        <result column="succeed_num" property="succeedNum" />
+        <result column="error_num" property="errorNum" />
+        <result column="update_num" property="updateNum" />
+        <result column="insertion_num" property="insertionNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+add_time AS addTime,
+add_user AS addUser,
+edit_time AS editTime,
+edit_user AS editUser,
+del_flag AS delFlag,
+        ws_record_id AS wsRecordId, table_name AS tableName, select_num AS selectNum, succeed_num AS succeedNum, error_num AS errorNum, update_num AS updateNum, insertion_num AS insertionNum
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="WsRecordInfo">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM ws_record_info ${ew.sqlSegment}
+    </select>
+</mapper>

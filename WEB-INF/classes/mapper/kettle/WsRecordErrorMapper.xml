@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.WsRecordErrorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.WsRecordError">
+        <id column="id" property="id" />
+        <result column="ws_record_id" property="wsRecordId" />
+        <result column="table_name" property="tableName" />
+        <result column="record_id" property="recordId" />
+        <result column="stack_trace" property="stackTrace" />
+        <result column="add_time" property="addTime" />
+        <result column="add_user" property="addUser" />
+        <result column="edit_time" property="editTime" />
+        <result column="edit_user" property="editUser" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ws_record_id AS wsRecordId, table_name AS tableName, record_id AS recordId, stack_trace AS stackTrace, add_time AS addTime, add_user AS addUser, edit_time AS editTime, edit_user AS editUser, del_flag AS delFlag
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="WsRecordError">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM ws_record_error ${ew.sqlSegment}
+    </select>
+</mapper>

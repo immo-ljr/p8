@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngCfItemFeeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngCfItemFee">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="REFUND_FLAG" property="refundFlag" />
+        <result column="VISIT_NO" property="visitNo" />
+        <result column="CF_ID" property="cfId" />
+        <result column="CF_ITEM_ID" property="cfItemId" />
+        <result column="PATIENT_NO" property="patientNo" />
+        <result column="PATIENT_NAME" property="patientName" />
+        <result column="INVOICE_NO" property="invoiceNo" />
+        <result column="ITEM_TYPE" property="itemType" />
+        <result column="FEE_DATE" property="feeDate" />
+        <result column="ITEM_ID" property="itemId" />
+        <result column="ITEM_NAME" property="itemName" />
+        <result column="ITEM_UNIT" property="itemUnit" />
+        <result column="ITEM_UNITPRICE" property="itemUnitprice" />
+        <result column="ITEM_QUANTITY" property="itemQuantity" />
+        <result column="ITEM_AMOUNT" property="itemAmount" />
+        <result column="DOC_ID" property="docId" />
+        <result column="DOC_NAME" property="docName" />
+        <result column="DEPART_ID" property="departId" />
+        <result column="DEPARTMENT" property="department" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        REFUND_FLAG AS refundFlag, VISIT_NO AS visitNo, CF_ID AS cfId, CF_ITEM_ID AS cfItemId, PATIENT_NO AS patientNo, PATIENT_NAME AS patientName, INVOICE_NO AS invoiceNo, ITEM_TYPE AS itemType, FEE_DATE AS feeDate, ITEM_ID AS itemId, ITEM_NAME AS itemName, ITEM_UNIT AS itemUnit, ITEM_UNITPRICE AS itemUnitprice, ITEM_QUANTITY AS itemQuantity, ITEM_AMOUNT AS itemAmount, DOC_ID AS docId, DOC_NAME AS docName, DEPART_ID AS departId, DEPARTMENT AS department, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngCfItemFee">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_cf_item_fee ${ew.sqlSegment}
+    </select>
+</mapper>

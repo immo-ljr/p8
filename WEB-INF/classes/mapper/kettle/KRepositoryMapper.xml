@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.KRepositoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.KRepository">
+    <result column="id" property="id" />
+    <result column="add_time" property="addTime" />
+    <result column="add_user" property="addUser" />
+    <result column="edit_time" property="editTime" />
+    <result column="edit_user" property="editUser" />
+    <result column="del_flag" property="delFlag" />
+        <result column="repository_name" property="repositoryName" />
+        <result column="repository_username" property="repositoryUsername" />
+        <result column="repository_password" property="repositoryPassword" />
+        <result column="repository_type" property="repositoryType" />
+        <result column="database_access" property="databaseAccess" />
+        <result column="database_host" property="databaseHost" />
+        <result column="database_port" property="databasePort" />
+        <result column="database_name" property="databaseName" />
+        <result column="database_username" property="databaseUsername" />
+        <result column="database_password" property="databasePassword" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+add_time AS addTime,
+add_user AS addUser,
+edit_time AS editTime,
+edit_user AS editUser,
+del_flag AS delFlag,
+        repository_name AS repositoryName, repository_username AS repositoryUsername, repository_password AS repositoryPassword, repository_type AS repositoryType, database_access AS databaseAccess, database_host AS databaseHost, database_port AS databasePort, database_name AS databaseName, database_username AS databaseUsername, database_password AS databasePassword
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="KRepository">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM k_repository ${ew.sqlSegment}
+    </select>
+</mapper>

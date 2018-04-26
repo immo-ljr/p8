@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.mapper.BaseUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.entity.BaseUser">
+    <result column="id" property="id" />
+        <result column="org_id" property="orgId" />
+        <result column="dept_id" property="deptId" />
+        <result column="email" property="email" />
+        <result column="mobile_number" property="mobileNumber" />
+        <result column="user_type" property="userType" />
+        <result column="user_password" property="userPassword" />
+        <result column="yz_password" property="yzPassword" />
+        <result column="user_name" property="userName" />
+        <result column="user_alias" property="userAlias" />
+        <result column="full_name" property="fullName" />
+        <result column="birth_date" property="birthDate" />
+        <result column="sex" property="sex" />
+        <result column="expert" property="expert" />
+        <result column="avater_url" property="avaterUrl" />
+        <result column="docter_title" property="docterTitle" />
+        <result column="teacher_title" property="teacherTitle" />
+        <result column="good_at" property="goodAt" />
+        <result column="introduction" property="introduction" />
+        <result column="create_date" property="createDate" />
+        <result column="create_user" property="createUser" />
+        <result column="update_date" property="updateDate" />
+        <result column="update_user" property="updateUser" />
+        <result column="version" property="version" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+        <result column="parentid" property="parentid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+        org_id AS orgId, dept_id AS deptId, email, mobile_number AS mobileNumber, user_type AS userType, user_password AS userPassword, yz_password AS yzPassword, user_name AS userName, user_alias AS userAlias, full_name AS fullName, birth_date AS birthDate, sex, expert, avater_url AS avaterUrl, docter_title AS docterTitle, teacher_title AS teacherTitle, good_at AS goodAt, introduction, create_date AS createDate, create_user AS createUser, update_date AS updateDate, update_user AS updateUser, version, status, remark, parentid
+    </sql>
+
+</mapper>

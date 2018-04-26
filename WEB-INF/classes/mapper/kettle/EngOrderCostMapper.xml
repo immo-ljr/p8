@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderCostMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderCost">
+        <id column="ORDER_ID" property="orderId" />
+        <result column="BED_FEE" property="bedFee" />
+        <result column="NURSE_FEE" property="nurseFee" />
+        <result column="WM_FEE" property="wmFee" />
+        <result column="CPD_FEE" property="cpdFee" />
+        <result column="CMH_FEE" property="cmhFee" />
+        <result column="RADIO_FEE" property="radioFee" />
+        <result column="EXAM_FEE" property="examFee" />
+        <result column="OXY_FEE" property="oxyFee" />
+        <result column="BLOOD_FEE" property="bloodFee" />
+        <result column="OPERATION_FEE" property="operationFee" />
+        <result column="CHECK_FEE" property="checkFee" />
+        <result column="ANESTH_FEE" property="anesthFee" />
+        <result column="TREAT_FEE" property="treatFee" />
+        <result column="OTHER_FEE" property="otherFee" />
+        <result column="TOTAL_FEE" property="totalFee" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ORDER_ID AS orderId, BED_FEE AS bedFee, NURSE_FEE AS nurseFee, WM_FEE AS wmFee, CPD_FEE AS cpdFee, CMH_FEE AS cmhFee, RADIO_FEE AS radioFee, EXAM_FEE AS examFee, OXY_FEE AS oxyFee, BLOOD_FEE AS bloodFee, OPERATION_FEE AS operationFee, CHECK_FEE AS checkFee, ANESTH_FEE AS anesthFee, TREAT_FEE AS treatFee, OTHER_FEE AS otherFee, TOTAL_FEE AS totalFee, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderCost">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_cost ${ew.sqlSegment}
+    </select>
+</mapper>

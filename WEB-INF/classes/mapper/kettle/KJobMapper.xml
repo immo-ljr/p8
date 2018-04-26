@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.KJobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.KJob">
+    <result column="id" property="id" />
+    <result column="add_time" property="addTime" />
+    <result column="add_user" property="addUser" />
+    <result column="edit_time" property="editTime" />
+    <result column="edit_user" property="editUser" />
+    <result column="del_flag" property="delFlag" />
+        <result column="job_name" property="jobName" />
+        <result column="job_description" property="jobDescription" />
+        <result column="job_type" property="jobType" />
+        <result column="job_path" property="jobPath" />
+        <result column="job_repository_id" property="jobRepositoryId" />
+        <result column="job_quartz" property="jobQuartz" />
+        <result column="job_record" property="jobRecord" />
+        <result column="job_log_level" property="jobLogLevel" />
+        <result column="job_status" property="jobStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+id,
+add_time AS addTime,
+add_user AS addUser,
+edit_time AS editTime,
+edit_user AS editUser,
+del_flag AS delFlag,
+        job_name AS jobName, job_description AS jobDescription, job_type AS jobType, job_path AS jobPath, job_repository_id AS jobRepositoryId, job_quartz AS jobQuartz, job_record AS jobRecord, job_log_level AS jobLogLevel, job_status AS jobStatus
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="KJob">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM k_job ${ew.sqlSegment}
+    </select>
+</mapper>

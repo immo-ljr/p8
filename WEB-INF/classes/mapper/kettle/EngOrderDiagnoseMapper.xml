@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderDiagnoseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderDiagnose">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="ORDER_ID" property="orderId" />
+        <result column="DIAG_DATE" property="diagDate" />
+        <result column="DIAG_NAME" property="diagName" />
+        <result column="DIAG_TYPE" property="diagType" />
+        <result column="DSCHARGE_TYPE" property="dschargeType" />
+        <result column="ICD10" property="icd10" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        ORDER_ID AS orderId, DIAG_DATE AS diagDate, DIAG_NAME AS diagName, DIAG_TYPE AS diagType, DSCHARGE_TYPE AS dschargeType, ICD10 AS icd10, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderDiagnose">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_diagnose ${ew.sqlSegment}
+    </select>
+</mapper>

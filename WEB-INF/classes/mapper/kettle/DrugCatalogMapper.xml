@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.DrugCatalogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.DrugCatalog">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="DRUG_NAME" property="drugName" />
+        <result column="TRADE_NAME" property="tradeName" />
+        <result column="SPEC_NAME" property="specName" />
+        <result column="PREP_NAME" property="prepName" />
+        <result column="MANUFACTURER_NAME" property="manufacturerName" />
+        <result column="PZWH" property="pzwh" />
+        <result column="MZ_UNIT" property="mzUnit" />
+        <result column="ZY_UNIT" property="zyUnit" />
+        <result column="USE_FLAG" property="useFlag" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        DRUG_NAME AS drugName, TRADE_NAME AS tradeName, SPEC_NAME AS specName, PREP_NAME AS prepName, MANUFACTURER_NAME AS manufacturerName, PZWH AS pzwh, MZ_UNIT AS mzUnit, ZY_UNIT AS zyUnit, USE_FLAG AS useFlag, CREATE_DATE AS createDate, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="DrugCatalog">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM drug_catalog ${ew.sqlSegment}
+    </select>
+</mapper>

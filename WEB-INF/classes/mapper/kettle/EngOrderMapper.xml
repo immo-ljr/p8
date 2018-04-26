@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrder">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="EDIT_TIME" property="editTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="SEX" property="sex" />
+        <result column="PAY_TYPE" property="payType" />
+        <result column="PATIENT_NO" property="patientNo" />
+        <result column="NAME" property="name" />
+        <result column="ADDRESS" property="address" />
+        <result column="ID_CARD" property="idCard" />
+        <result column="PHONE_NO" property="phoneNo" />
+        <result column="HEIGHT" property="height" />
+        <result column="WEIGHT" property="weight" />
+        <result column="BIRTH_WEIGHT" property="birthWeight" />
+        <result column="ALLERGY_LIST" property="allergyList" />
+        <result column="PREGNANCY" property="pregnancy" />
+        <result column="TIME_OF_PREG" property="timeOfPreg" />
+        <result column="BREAST_FEEDING" property="breastFeeding" />
+        <result column="BIRTHDAY" property="birthday" />
+        <result column="MARRITAL" property="marrital" />
+        <result column="OCCPATION" property="occpation" />
+        <result column="NATONALITY" property="natonality" />
+        <result column="ENTRY_TIME" property="entryTime" />
+        <result column="IN_DATE" property="inDate" />
+        <result column="IN_DEPART_ID" property="inDepartId" />
+        <result column="IN_DEPARTMENT" property="inDepartment" />
+        <result column="IN_AREA" property="inArea" />
+        <result column="OUT_DATE" property="outDate" />
+        <result column="OUT_DEPART_ID" property="outDepartId" />
+        <result column="OUT_DEPARTMENT" property="outDepartment" />
+        <result column="DOC_GROUP" property="docGroup" />
+        <result column="DEPT_GROUP" property="deptGroup" />
+        <result column="OUT_AREA" property="outArea" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+EDIT_TIME AS editTime,
+DEL_FLAG AS delFlag,
+        SEX AS sex, PAY_TYPE AS payType, PATIENT_NO AS patientNo, NAME AS name, ADDRESS AS address, ID_CARD AS idCard, PHONE_NO AS phoneNo, HEIGHT AS height, WEIGHT AS weight, BIRTH_WEIGHT AS birthWeight, ALLERGY_LIST AS allergyList, PREGNANCY AS pregnancy, TIME_OF_PREG AS timeOfPreg, BREAST_FEEDING AS breastFeeding, BIRTHDAY AS birthday, MARRITAL AS marrital, OCCPATION AS occpation, NATONALITY AS natonality, ENTRY_TIME AS entryTime, IN_DATE AS inDate, IN_DEPART_ID AS inDepartId, IN_DEPARTMENT AS inDepartment, IN_AREA AS inArea, OUT_DATE AS outDate, OUT_DEPART_ID AS outDepartId, OUT_DEPARTMENT AS outDepartment, DOC_GROUP AS docGroup, DEPT_GROUP AS deptGroup, OUT_AREA AS outArea, LAST_UPDATE_TIME AS lastUpdateTime
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrder">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order ${ew.sqlSegment}
+    </select>
+</mapper>

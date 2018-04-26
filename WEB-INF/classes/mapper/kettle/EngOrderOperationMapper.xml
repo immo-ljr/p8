@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.immo.phamacybus.kettle.mapper.EngOrderOperationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.immo.phamacybus.kettle.entity.EngOrderOperation">
+    <result column="ID" property="id" />
+    <result column="ADD_USER" property="addUser" />
+    <result column="EDIT_USER" property="editUser" />
+    <result column="ADD_TIME" property="addTime" />
+    <result column="DEL_FLAG" property="delFlag" />
+        <result column="ORDER_ID" property="orderId" />
+        <result column="CODE" property="code" />
+        <result column="NAME" property="name" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+        <result column="INCISION_TYPE" property="incisionType" />
+        <result column="INCISION_STATUS" property="incisionStatus" />
+        <result column="INPLANT" property="inplant" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+        <result column="ADD_TIMAE" property="addTimae" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+ID AS id,
+ADD_USER AS addUser,
+EDIT_USER AS editUser,
+ADD_TIME AS addTime,
+DEL_FLAG AS delFlag,
+        ORDER_ID AS orderId, CODE AS code, NAME AS name, START_TIME AS startTime, END_TIME AS endTime, INCISION_TYPE AS incisionType, INCISION_STATUS AS incisionStatus, INPLANT AS inplant, LAST_UPDATE_TIME AS lastUpdateTime, ADD_TIMAE AS addTimae
+    </sql>
+    
+	<select id="selectByPageAndWrapper" resultType="EngOrderOperation">
+        SELECT 
+        <include refid="Base_Column_List" />
+        FROM eng_order_operation ${ew.sqlSegment}
+    </select>
+</mapper>
